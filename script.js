@@ -10,7 +10,7 @@ class BankAccount {
     if (depositAmount > 0) {
       this.balance += depositAmount;
       this.transactions.push({ type: "deposit", amount: depositAmount });
-      return `Successfully deposited ${depositAmount}. New balance: ${this.balance}`;
+      return `Successfully deposited $${depositAmount}. New balance: $${this.balance}`;
     } else {
       return `Deposit amount must be greater than zero.`;
     }
@@ -21,7 +21,7 @@ class BankAccount {
     if (withdrawAmount > 0 && withdrawAmount <= this.balance) {
       this.balance -= withdrawAmount;
       this.transactions.push({ type: "withdraw", amount: withdrawAmount });
-      return `Successfully withdrew ${withdrawAmount}. New balance: ${this.balance}`;
+      return `Successfully withdrew $${withdrawAmount}. New balance: $${this.balance}`;
     } else {
       return `Insufficient balance or invalid amount.`;
     }
@@ -29,19 +29,19 @@ class BankAccount {
 
   // fonction d'affichage du solde du compte
   checkBalance() {
-    return `Current balance: ${this.balance}`;
+    return `Current balance: $${this.balance}`;
   }
 
   // fonction d'affichage des dépôts
   listAllDeposits() {
     const depositArray = this.transactions.filter(t => t.type === "deposit");
-    return "Deposits: " + depositArray.map(t => t.amount).join(", ");
+    return "Deposits: " + depositArray.map(t => t.amount).join(",");
   }
 
   // fonction d'affichage des retraits
   listAllWithdrawals() {
     const withdrawArray = this.transactions.filter(t => t.type === "withdraw");
-    return "Withdrawals: " + withdrawArray.map(t => t.amount).join(", ");
+    return "Withdrawals: " + withdrawArray.map(t => t.amount).join(",");
   }
 }
 
